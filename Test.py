@@ -1,9 +1,9 @@
 import unittest
 
-from Amplitude_Swapping_Implementation import swappingAmplitude
-from Amplitude_Swapping_Implementation import maxNumBits
-from Amplitude_Swapping_Implementation import numBits
-from Amplitude_Swapping_Implementation import extendBitString 
+from Probability_Amplitude_Swapping_Implementation import swappingAmplitude
+from Probability_Amplitude_Swapping_Implementation import maxNumBits
+from Probability_Amplitude_Swapping_Implementation import numBits
+from Probability_Amplitude_Swapping_Implementation import extendBitString 
 
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import Statevector
