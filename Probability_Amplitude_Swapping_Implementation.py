@@ -80,7 +80,7 @@ def swappingAmplitude(x, y):
         zeroBits = []
 
         # Step 1 applying CNOT gate to every different bits between 2 bitstrings from i to n
-        for j in range(i+1, n):
+        for j in range(n-1, i, -1):
         #     If jth bit of x and y is different
         #     then apply CNOT gate from i to j
             if getBit(x, n-j-1) != getBit(y, n-j-1):
@@ -88,6 +88,7 @@ def swappingAmplitude(x, y):
                 diffBits.append(j)
         #         Add CNOT gate to the circuit
                 circ.cx(i, j)
+                circ.barrier()
         #         Flip the bit conresponding to CNOT gate in bitstring of x and y the make use in the next operations
                 if getBit(x, n-i-1) != 0:
                     x = flipBit(x, n-j-1)
@@ -129,7 +130,8 @@ def swappingAmplitude(x, y):
             y = flipBit(y, n-l-1)
 
         # Step 3.2 repeating Step 1
-        for g in diffBits:
+        for g in diffBits[::-1]:
+            circ.barrier()
             circ.cx(i, g)
             if getBit(x, n-i-1) != 0:
                 x = flipBit(x, n-g-1)
